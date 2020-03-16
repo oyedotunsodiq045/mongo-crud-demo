@@ -37,15 +37,22 @@ async function createCourse() {
 // }
 
 // Get courses
-// where author contains - Sodiq, isPublished is true,
+// where author contains - Abiodun, isPublished is true,
 // sort name in ascending order
 // and output only name and tags field to console
-async function getCourses() {
-  const courses = await Course.find({ author: /.*Sodiq.*/, isPublished: true })
-    .limit(10)
-    .sort({ name: 1 })
-    .select({ name: 1, author: 1, tags: 1 });
+// async function getCourses() {
+//   const courses = await Course.find({ author: /.*aBiOdUn.*/i, isPublished: true })
+//     .limit(10)
+//     .sort({ name: 1 })
+//     .select({ name: 1, author: 1, tags: 1 });
 
+//   console.log(courses);
+// }
+
+// Get Course
+// where author starts with Gbolahan
+async function getCourses() {
+  const courses = await Course.find({ author: /^gbolahan/i });
   console.log(courses);
 }
 
