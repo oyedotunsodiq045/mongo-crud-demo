@@ -51,8 +51,15 @@ async function createCourse() {
 
 // Get Course
 // where author starts with Gbolahan
+// async function getCourses() {
+//   const courses = await Course.find({ author: /^gbolahan/i });
+//   console.log(courses);
+// }
+
+// Get Course
+// where author ends with Oyedotun
 async function getCourses() {
-  const courses = await Course.find({ author: /^gbolahan/i });
+  const courses = await Course.find({ author: /oYedotun$/i });
   console.log(courses);
 }
 
