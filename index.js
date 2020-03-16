@@ -58,8 +58,20 @@ async function createCourse() {
 
 // Get Course
 // where author ends with Oyedotun
+// async function getCourses() {
+//   const courses = await Course
+//   .find({ author: /oYedotun$/i });
+//   console.log(courses);
+// }
+
+// Get count of all courses
+// where name contains the word course
 async function getCourses() {
-  const courses = await Course.find({ author: /oYedotun$/i });
+  const courses = await Course.find({ name: /.*course.*/i, isPublished: true })
+    .limit(10)
+    .sort({ name: 1 })
+    .count();
+
   console.log(courses);
 }
 
