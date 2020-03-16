@@ -66,11 +66,29 @@ async function createCourse() {
 
 // Get count of all courses
 // where name contains the word course
+// async function getCourses() {
+//   const courses = await Course.find({ name: /.*course.*/i, isPublished: true })
+//     .limit(10)
+//     .sort({ name: 1 })
+//     .count();
+
+//   console.log(courses);
+// }
+
+// Get Course
+// Pagination
 async function getCourses() {
-  const courses = await Course.find({ name: /.*course.*/i, isPublished: true })
-    .limit(10)
+  pageNumber = 2;
+  pageSize = 10;
+
+  // api/v1/courses?pageNumber=2&pageSize=10
+
+  const courses = await Course
+    .find({ author: /.*aBiOdUn.*/i, isPublished: true })
+    .skip((pageNumber - 1) * pageSize)
+    .limit(pageSize)
     .sort({ name: 1 })
-    .count();
+    .select({ name: 1, tags: 1 });
 
   console.log(courses);
 }
