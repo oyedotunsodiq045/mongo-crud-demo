@@ -31,49 +31,51 @@ async function createCourse() {
 }
 
 // Get all courses
-// async function getCourses() {
-//     const courses = await Course.find();
-//     console.log(courses);
-// }
+async function getCourses() {
+  const courses = await Course.find();
+  console.log(courses);
+}
 
 // Get courses
 // where author contains - Abiodun, isPublished is true,
 // sort name in ascending order
 // and output only name and tags field to console
-// async function getCourses() {
-//   const courses = await Course.find({ author: /.*aBiOdUn.*/i, isPublished: true })
-//     .limit(10)
-//     .sort({ name: 1 })
-//     .select({ name: 1, author: 1, tags: 1 });
+async function getCourses() {
+  const courses = await Course.find({
+    author: /.*aBiOdUn.*/i,
+    isPublished: true
+  })
+    .limit(10)
+    .sort({ name: 1 })
+    .select({ name: 1, author: 1, tags: 1 });
 
-//   console.log(courses);
-// }
+  console.log(courses);
+}
 
 // Get Course
 // where author starts with Gbolahan
-// async function getCourses() {
-//   const courses = await Course.find({ author: /^gbolahan/i });
-//   console.log(courses);
-// }
+async function getCourses() {
+  const courses = await Course.find({ author: /^gbolahan/i });
+  console.log(courses);
+}
 
 // Get Course
 // where author ends with Oyedotun
-// async function getCourses() {
-//   const courses = await Course
-//   .find({ author: /oYedotun$/i });
-//   console.log(courses);
-// }
+async function getCourses() {
+  const courses = await Course.find({ author: /oYedotun$/i });
+  console.log(courses);
+}
 
 // Get count of all courses
 // where name contains the word course
-// async function getCourses() {
-//   const courses = await Course.find({ name: /.*course.*/i, isPublished: true })
-//     .limit(10)
-//     .sort({ name: 1 })
-//     .count();
+async function getCourses() {
+  const courses = await Course.find({ name: /.*course.*/i, isPublished: true })
+    .limit(10)
+    .sort({ name: 1 })
+    .count();
 
-//   console.log(courses);
-// }
+  console.log(courses);
+}
 
 // Get Course
 // Pagination
@@ -83,8 +85,10 @@ async function getCourses() {
 
   // api/v1/courses?pageNumber=2&pageSize=10
 
-  const courses = await Course
-    .find({ author: /.*aBiOdUn.*/i, isPublished: true })
+  const courses = await Course.find({
+    author: /.*aBiOdUn.*/i,
+    isPublished: true
+  })
     .skip((pageNumber - 1) * pageSize)
     .limit(pageSize)
     .sort({ name: 1 })
@@ -93,5 +97,28 @@ async function getCourses() {
   console.log(courses);
 }
 
+// Approach: Query first
+// findById()
+// Modify its properties
+// save()
+async function updateCourse(id) {
+  const course = await Course.findById(id);
+  if (!course) return;
+
+  // course.isPublished = false;
+  // course.author = 'Major Stark';
+
+  course.set({
+    isPublished: true,
+    author: 'Sodiq of Little Rock',
+    name: 'Ruby on Rails'
+  });
+
+  const result = await course.save();
+
+  console.log(result);
+}
+
 // createCourse();
-getCourses();
+// getCourses();
+updateCourse('5e6bb56f8082dd51bc68a18c');
