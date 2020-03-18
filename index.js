@@ -101,24 +101,42 @@ async function getCourses() {
 // findById()
 // Modify its properties
 // save()
+// async function updateCourse(id) {
+//   const course = await Course.findById(id);
+//   if (!course) return;
+
+// course.isPublished = false;
+// course.author = 'Major Stark';
+
+//   course.set({
+//     isPublished: true,
+//     author: 'Sodiq of Little Rock',
+//     name: 'Ruby on Rails'
+//   });
+
+//   const result = await course.save();
+
+//   console.log(result);
+// }
+
+// Approach: Update first
+// Update directly
+// Optionally: get the updated document
 async function updateCourse(id) {
-  const course = await Course.findById(id);
-  if (!course) return;
-
-  // course.isPublished = false;
-  // course.author = 'Major Stark';
-
-  course.set({
-    isPublished: true,
-    author: 'Sodiq of Little Rock',
-    name: 'Ruby on Rails'
-  });
-
-  const result = await course.save();
+  const result = await Course.update(
+    { _id: id },
+    {
+      $set: {
+        isPublished: true,
+        author: 'Gbolahan of Lagos',
+        name: 'Python Django'
+      }
+    }
+  );
 
   console.log(result);
 }
 
 // createCourse();
 // getCourses();
-updateCourse('5e6bb56f8082dd51bc68a18c');
+updateCourse('5e6ba63f37db4e061c4d5a27');
