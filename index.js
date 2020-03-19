@@ -17,6 +17,7 @@ const CourseSchema = new Schema({
 // Course Model
 const Course = mongoose.model('Course', CourseSchema);
 
+// Create course
 async function createCourse() {
   // course object (based on Course class)
   const course = new Course({
@@ -97,6 +98,7 @@ async function getCourses() {
   console.log(courses);
 }
 
+// Update course
 // Approach: Query first
 // findById()
 // Modify its properties
@@ -170,6 +172,22 @@ async function updateCourse(id) {
   console.log(course);
 }
 
+// Remove Course
+// Delete one document
+async function removeCourse(id) {
+  const result = await Course.deleteOne({ _id: id });
+  console.log(result);
+}
+
+// Remove Course
+// Delete many document
+async function removeCourse(id) {
+  // const result = await Course.deleteMany({ _id: id });
+  const course = await Course.findByIdAndRemove({ _id: id });
+  console.log(course);
+}
+
 // createCourse();
 // getCourses();
-updateCourse('5e6bb56f8082dd51bc68a18c');
+// updateCourse('5e6bb56f8082dd51bc68a18c');
+removeCourse('5e6ba63f37db4e061c4d5a27');
