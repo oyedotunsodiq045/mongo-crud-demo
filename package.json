@@ -1,27 +1,24 @@
 {
   "name": "mongo-crud-demo",
   "version": "1.0.0",
-  "description": "",
+  "description": "A Node.JS Mongo CRUD demo",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oyedotunsodiq045/mongo-crud-demo.git"
+  },
   "keywords": [],
-  "author": "Sdiq Oyedotun",
-  "license": "MIT",
+  "author": "Sodiq Oyedotun",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/oyedotunsodiq045/mongo-crud-demo/issues"
+  },
+  "homepage": "https://github.com/oyedotunsodiq045/mongo-crud-demo#readme",
   "dependencies": {
-    "bcrypt": "^4.0.1",
-    "config": "^1.29.4",
-    "express": "^4.16.2",
-    "express-async-errors": "^2.1.0",
-    "fawn": "^2.1.5",
-    "helmet": "^3.9.0",
-    "joi": "^13.1.0",
-    "jsonwebtoken": "^8.1.1",
-    "lodash": "^4.17.15",
-    "mongoose": "^5.0.1",
-    "morgan": "^1.9.0",
-    "winston": "^2.4.0",
-    "winston-mongodb": "^3.0.0"
+    "express": "^4.17.1",
+    "mongoose": "^5.9.5"
   }
 }
