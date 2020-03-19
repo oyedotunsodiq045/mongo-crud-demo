@@ -122,21 +122,54 @@ async function getCourses() {
 // Approach: Update first
 // Update directly
 // Optionally: get the updated document
+// async function updateCourse(id) {
+//   const result = await Course.update(
+//     { _id: id },
+//     {
+//       $set: {
+//         isPublished: true,
+//         author: 'Gbolahan of Lagos',
+//         name: 'Python Django'
+//       }
+//     }
+//   );
+
+//   console.log(result);
+// }
+
+// Approach: Update first
+// Get the document that was updated
+// the original document before the update operation
+// async function updateCourse(id) {
+//   const course = await Course.findByIdAndUpdate(id, {
+//     $set: {
+//       isPublished: true,
+//       author: 'Abiodun of Canada',
+//       name: 'React Native'
+//     }
+//   });
+
+//   console.log(course);
+// }
+
+// Approach: Update first
+// Get the updated document
 async function updateCourse(id) {
-  const result = await Course.update(
-    { _id: id },
+  const course = await Course.findByIdAndUpdate(
+    id,
     {
       $set: {
-        isPublished: true,
-        author: 'Gbolahan of Lagos',
-        name: 'Python Django'
+        isPublished: false,
+        author: 'Sodiq of Little Rock',
+        name: 'Ruby on Rails'
       }
-    }
+    },
+    { new: true }
   );
 
-  console.log(result);
+  console.log(course);
 }
 
 // createCourse();
 // getCourses();
-updateCourse('5e6ba63f37db4e061c4d5a27');
+updateCourse('5e6bb56f8082dd51bc68a18c');
