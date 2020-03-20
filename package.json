@@ -2,9 +2,10 @@
   "name": "mongo-crud-demo",
   "version": "1.0.0",
   "description": "A Node.JS Mongo CRUD demo",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "NODE_ENV=production node server",
+    "dev": "nodemon server"
   },
   "repository": {
     "type": "git",
@@ -17,8 +18,14 @@
     "url": "https://github.com/oyedotunsodiq045/mongo-crud-demo/issues"
   },
   "homepage": "https://github.com/oyedotunsodiq045/mongo-crud-demo#readme",
+  "optionalDependencies": {
+    "win-node-env": "^0.4.0"
+  },
   "dependencies": {
+    "colors": "^1.4.0",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "mongoose": "^5.9.5"
+    "mongoose": "^5.9.5",
+    "morgan": "^1.9.1"
   }
 }
